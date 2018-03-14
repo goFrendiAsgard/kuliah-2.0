@@ -5,7 +5,7 @@
 * Customer Collaboration over contract negotiation
 * Responding to Change over following a plan
 
-# Tools
+# Our Tools
 
 * MongoDB
 * Node.Js
@@ -13,7 +13,7 @@
 * git (Sofware versioning system)
 * Chimera-CMS
 
-# Alternative Tools
+# Alternative Mainstream Tools
 
 * Ruby on Rails (Scaffolding, ORM)
 * Laravel (ORM: Eloquent)
