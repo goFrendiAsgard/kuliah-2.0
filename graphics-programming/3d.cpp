@@ -20,7 +20,7 @@ void display() {
    glMatrixMode(GL_MODELVIEW);
  
    glLoadIdentity();
-   glTranslatef(1.5f, 0.0f, -7.0f);
+   glTranslatef(1.5f, 0.0f, -10.0f);
    glRotatef(angleCube, 1.0f, 1.0f, 1.0f);
  
    glBegin(GL_QUADS);
@@ -62,7 +62,7 @@ void display() {
    glEnd();
  
    glLoadIdentity();
-   glTranslatef(-1.5f, 0.0f, -6.0f);
+   glTranslatef(-1.5f, 0.0f, -10.0f);
    glRotatef(anglePyramid, 1.0f, 1.0f, 0.0f);
  
    glBegin(GL_TRIANGLES);
@@ -115,7 +115,7 @@ void reshape(GLsizei width, GLsizei height) {
  
 int main(int argc, char** argv) {
    glutInit(&argc, argv);
-   glutInitDisplayMode(GLUT_DOUBLE);
+   glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
    glutInitWindowSize(640, 480);
    glutInitWindowPosition(50, 50);
    glutCreateWindow("3d-animation");
