@@ -96,7 +96,7 @@ void display() {
    glEnd();
    glutSwapBuffers();
    anglePyramid += 0.2f;
-   angleCube -= 0.15f;
+   angleCube += 0.15f;
 }
  
 void timer(int value) {
