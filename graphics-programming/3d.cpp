@@ -18,7 +18,7 @@ void initGL() {
 void display() {
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    glMatrixMode(GL_MODELVIEW);
- 
+
    glLoadIdentity();
    glTranslatef(1.5f, 0.0f, -10.0f);
    glRotatef(angleCube, 1.0f, 1.0f, 1.0f);
