@@ -47,6 +47,10 @@ npm install -g chimera-framework
   * [Download](https://nodejs.org/dist/v9.6.1/node-v9.6.1-x64.msi)
 * Install git
   * [https://git-scm.com/download/gui/windows](https://git-scm.com/download/gui/windows)
+* Workaround
+  ```
+  npm config set strict-ssl false
+  ```
 * Install Chimera Framework
   ```
   npm install -g chimera-framework
