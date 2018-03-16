@@ -143,6 +143,46 @@ Since you have created an entity and a corresponding menu, Now you can click on 
 * Many2One (e.g: Many students are in the same faculty)
 * One2Many (e.g: A student has many hobbies)
 * One2Many + Many2One = Many2Many (e.g: A student take many courses, while a single course is taken by many students)
+```json
+{
+  "picture": {
+    "inputTemplate": "<%- cck.input.image %>",
+    "presentationTemplate": "<%- cck.presentation.image %>"
+  },
+  "name": {
+    "inputTemplate": "<%- cck.input.text %>",
+    "presentationTemplate": "<%- cck.presentation.text %>"
+  },
+  "expertise": {
+    "inputTemplate": "<%- cck.input.option %>",
+    "presentationTemplate": "<%- cck.presentation.option %>",
+    "options": {
+      "ninjutsu": "Ninjutsu",
+      "genjutsu": "Genjutsu",
+      "taijutsu": "Taijutsu"
+    }
+  },
+  "faculty": {
+    "inputTemplate": "<%- cck.input.many2one %>",
+    "presentationTemplate": "<%- cck.presentation.many2one %>",
+    "ref": "faculties",
+    "keyField": "name",
+    "fields": [
+      "name"
+    ]
+  },
+  "hobbies": {
+    "inputTemplate": "<%- cck.input.one2many %>",
+    "presentationTemplate": "<%- cck.presentation.one2many %>",
+    "fields": {
+      "name": {
+        "inputTemplate": "<%- cck.input.text %>",
+        "presentationTemplate": "<%- cck.presentation.text %>"
+      }
+    }
+  }
+}
+```
 
 # Other Features
 
