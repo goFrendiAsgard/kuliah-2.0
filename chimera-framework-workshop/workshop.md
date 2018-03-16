@@ -58,7 +58,7 @@ npm install -g chimera-framework
 
 # Generate Project
 
-```bash
+```
 gofrendi@asgard:~$ chimera-init-cms myApp
 Mongodb Url (mongodb://localhost/myApp): 
 [INFO] Read chimera-framework's package.json...
