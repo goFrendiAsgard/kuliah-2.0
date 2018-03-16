@@ -30,6 +30,8 @@ npm install -g chimera-framework
 
 # Installation (Windows)
 
+* Open `Cmd` with admin privilege (right click, run as admin)
+
 * Install mongoDB
   * [https://mongodb.com](https://mongodb.com)
   * [Download](https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.3-signed.msi/download)
