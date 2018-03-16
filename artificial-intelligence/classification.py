@@ -10,7 +10,8 @@ data = [
   ]
 newData = [[4.0, 4.0]]
 target = [0, 1, 0, 0, 1, 1]
-y_pred = gnb.fit(data, target).predict(newData)
+gnb.fit(data, target)
+y_pred = gnb.predict(newData)
 print(data)
 print(target)
 print(newData)

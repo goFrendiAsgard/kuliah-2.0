@@ -1,3 +1,5 @@
+This material is available here: [http://gg.gg/9k3jf](http://gg.gg/9k3jf)
+
 # Agile Development
 
 * Individuals and Interactions over processes and tools
