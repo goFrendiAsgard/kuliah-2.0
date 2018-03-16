@@ -24,7 +24,7 @@ This material is available here: [http://gg.gg/9k3jf](http://gg.gg/9k3jf)
 # Installation (Linux)
 
 ```bash
-sudo apt-get install mongodb node git
+sudo apt-get install mongodb nodejs git
 npm install -g chimera-framework
 ```
 
