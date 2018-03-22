@@ -34,20 +34,20 @@ void display()
   glTranslatef(0, -4, -20);
 
   // X Rotation
-  /* glRotatef(angle, 1, 0 , 0); */
+  /*glRotatef(angle, 1, 0 , 0);*/
 
   // Y Rotation
-  /* glRotatef(angle, 0, 1, 0); */
+  /*glRotatef(angle, 0, 1, 0);*/
 
   // Z Rotation
-  /* glRotatef(angle, 0, 0, 1); */
+  /*glRotatef(angle, 0, 0, 1);*/
 
   // Composite
-  /*
+  
   glTranslatef(-3, 0, 0);
   glRotatef(angle, 0, 1, 0);
   glTranslatef(3, 0, 0);
-  */
+
 
   glColor3f(1, 0, 1);
   glBegin(GL_QUADS);
