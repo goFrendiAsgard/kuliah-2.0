@@ -3,8 +3,8 @@ from math import log
 def information(p,n):
   p = float(p)
   n = float(n)
-  p = 0.01 if p == 0 else p
-  n = 0.01 if n == 0 else n
+  p = 0.01 if p == 0 else p # To avoid log 0, thanks to Galih
+  n = 0.01 if n == 0 else n 
   return -p/(p+n) * log(p/(p+n), 2) -n/(p+n) * log(n/(p+n), 2)
 
 def entropy(data):

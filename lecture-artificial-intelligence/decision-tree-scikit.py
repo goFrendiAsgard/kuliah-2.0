@@ -19,4 +19,6 @@ Y = [1, 0, 0, 1, 1, 0, 1]
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X, Y)
 prediction = clf.predict_proba([[2, 2, 1]])
+# or this:
+# prediction = clf.predict([[2, 2, 1]])
 print (prediction)
