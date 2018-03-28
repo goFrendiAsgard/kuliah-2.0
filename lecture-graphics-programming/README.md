@@ -66,24 +66,26 @@ y^2 + x^2 = r^2
 sin(angle) = y/r
 cos(angle) = x/r
 tan(angle) = y/x = sin(angle)/cos(angle)
+sin(angle) = cos(180-angle)
+cos(angle) = sin(180-angle)
 ```
 ### For 90 <= angle <= 180
 ```
-sin(180-angle) = sin (180-angle)
-cos(180-angle) = -cos (180-angle)
-tan(180-angle) = -tan (180-angle)
+sin(180-angle) = sin (angle)
+cos(180-angle) = -cos (angle)
+tan(180-angle) = -tan (angle)
 ```
 ### For 180 <= angle <= 270
 ```
-sin(180-angle) = -sin (180+angle)
-cos(180-angle) = -cos (180+angle)
-tan(180-angle) = tan (180+angle)
+sin(180+angle) = -sin (angle)
+cos(180+angle) = -cos (angle)
+tan(180+angle) = tan (angle)
 ```
 ### For 270 <= angle <= 360
 ```
-sin(180-angle) = -sin (360-angle)
-cos(180-angle) = cos (360-angle)
-tan(180-angle) = -tan (360-angle)
+sin(360-angle) = -sin (angle)
+cos(360-angle) = cos (angle)
+tan(360-angle) = -tan (angle)
 ```
 # Links
 * [https://www.codeproject.com/articles/182109/setting-up-an-opengl-development-environment-in-ub](https://www.codeproject.com/articles/182109/setting-up-an-opengl-development-environment-in-ub)
