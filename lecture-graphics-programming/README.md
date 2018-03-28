@@ -9,6 +9,14 @@
 * `sudo apt-get install g++ mesa-common-dev freeglut3-dev`
 * `g++ <your-file.cpp> -o <executable-name> -lglut -lGL -lGLU`
 
+# Matrix Multiplicatiaon
+
+```
+|a b c|  |g j|  =  |ag+bh+ci  aj+bk+cl|
+|d e f|  |h k|     |dg+dh+di  dj+ek+fl|
+         |i l|
+```
+
 # 3D Transformation Matrix
 
 ## Translation (l,m,n)
