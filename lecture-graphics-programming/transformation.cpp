@@ -42,12 +42,12 @@ void display()
   // Z Rotation
   /*glRotatef(angle, 0, 0, 1);*/
 
-  // Composite
-  
+  // Rotation + Translation
+  /*
   glTranslatef(-3, 0, 0);
   glRotatef(angle, 0, 1, 0);
   glTranslatef(3, 0, 0);
-
+  */
 
   glColor3f(1, 0, 1);
   glBegin(GL_QUADS);
