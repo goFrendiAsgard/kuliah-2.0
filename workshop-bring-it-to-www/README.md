@@ -67,9 +67,15 @@ Start at port 3000
 
 ![](simple-route.png)
 
-# Calculator (java)
+# Accessing simple route
 
 ```
+http://localhot:3000/example?nama=Luke
+```
+
+# Calculator (java)
+
+```java
 // File location: ~/Projects/workshop/Calculator.java
 // Compilation: javac Calculator.java
 // Execution: java Calculator
@@ -103,3 +109,12 @@ public class Calculator {
 
 # Calculator (route)
 ![](calculator-route.png)
+
+# Calculator (form-route)
+![](calculator-form-route.png)
+
+# Calculator (in action)
+## Form
+![](calculator-form.png)
+## Result
+![](calculator.png)
