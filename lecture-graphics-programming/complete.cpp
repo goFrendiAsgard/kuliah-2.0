@@ -93,7 +93,8 @@ void display()
 
   gluLookAt(
     camX, camY, 0, 
-    camX, camY, -1, 
+    0,0,-15,
+    //camX, camY, -1, 
     0,1,0);
 
   glTranslatef(0, 0, -15);
