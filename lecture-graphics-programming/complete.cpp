@@ -9,6 +9,7 @@ GLUquadric *q = gluNewQuadric();
 GLfloat camY = 0.0;
 GLfloat camX = 0.0;
 GLfloat angle = 1;
+GLfloat direction = 1;
 
 
 /*  Create checkerboard texture  */
@@ -94,8 +95,7 @@ void display()
   gluLookAt(
     camX, camY, 0, 
     0,0,-15,
-    //camX, camY, -1, 
-    0,1,0);
+    1,1,0);
 
   glTranslatef(0, 0, -15);
   glPushMatrix();
@@ -138,7 +138,7 @@ void display()
   glEnd();
   glDisable(GL_TEXTURE_2D);
 
-  angle+=1;
+  angle += direction;
 
   glutSwapBuffers();
 }
@@ -163,10 +163,17 @@ void reshape(GLsizei width, GLsizei height)
 void keyControl(int k, int x, int y)
 {
   switch(k) {
-    case GLUT_KEY_UP: camY --; break;
-    case GLUT_KEY_DOWN: camY ++; break;
+    case GLUT_KEY_UP: camY ++; break;
+    case GLUT_KEY_DOWN: camY --; break;
     case GLUT_KEY_LEFT: camX --; break;
     case GLUT_KEY_RIGHT: camX ++; break;
+  }
+}
+
+void mouseControl(int button, int state, int x, int y)
+{
+  switch(button) {
+    case GLUT_LEFT_BUTTON: direction = -direction; break;
   }
 }
 
@@ -182,6 +189,7 @@ int main(int argc, char **argv)
   initGL();
   glutTimerFunc(0, timer, 0);
   glutSpecialFunc(keyControl);
+  glutMouseFunc(mouseControl);
   glutMainLoop();
   return 0;
 }
