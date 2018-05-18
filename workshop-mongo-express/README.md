@@ -71,7 +71,7 @@ db.persons.update({name: 'Iruka'}, {rank: 'Chunin'})
 
 ```
 // DELETE FROM persons WHERE name = 'Iruka'
-db.persons.delete({name: 'Iruka'})
+db.persons.deleteOne({name: 'Iruka'})
 ```
 
 ## Further Reading
