@@ -153,7 +153,6 @@ MongoClient.connect(url, function(err, client) {
     assert.equal(err, null);
     console.log("Found the following records");
     console.log(docs)
-    callback(docs);
   });
  
   client.close();
