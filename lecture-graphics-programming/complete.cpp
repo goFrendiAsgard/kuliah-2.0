@@ -94,8 +94,8 @@ void display()
 
   gluLookAt(
     camX, camY, 0, 
-    0,0,-15,
-    1,1,0);
+    0, 0,-15,
+    0,1,0);
 
   glTranslatef(0, 0, -15);
   glPushMatrix();
