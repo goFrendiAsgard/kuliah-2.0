@@ -72,6 +72,9 @@ db.persons.update({name: 'Iruka'}, {rank: 'Chunin'})
 ```
 // DELETE FROM persons WHERE name = 'Iruka'
 db.persons.deleteOne({name: 'Iruka'})
+
+// if the above doesn't work, try this one:
+db.persons.remove({name: 'Iruka'})
 ```
 
 ## Further Reading
