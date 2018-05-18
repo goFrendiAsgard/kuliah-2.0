@@ -140,7 +140,7 @@ const assert = require('assert');
 const url = 'mongodb://localhost:27017';
  
 // Database Name
-const dbName = 'myproject';
+const dbName = 'example';
  
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
