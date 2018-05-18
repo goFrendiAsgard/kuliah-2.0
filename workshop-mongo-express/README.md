@@ -64,7 +64,10 @@ db.persions.find({name: 'Kakashi'})
 
 ```
 // UPDATE persons SET rank='Chunin' WHERE name='Iruka'
-db.persons.update({name: 'Iruka'}, {rank: 'Chunin'})
+db.persons.update({name: 'Iruka'}, {$set: {rank: 'Chunin'}})
+
+// The same, but all the attributes should be specified. Otherwise it will be omitted
+db.persons.update({name: 'Iruka'}, {name: 'Iruka', rank: 'Chunin'})
 ```
 
 ## Delete Document
