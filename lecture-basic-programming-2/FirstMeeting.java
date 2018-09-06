@@ -1,9 +1,3 @@
-/*
- * Nama : Go Frendi Gunawan
- * No HP/Whatsappp : 089680868343
- * Telegram : @gofrendi
- * Materi : https://github.com/goFrendiAsgard/kuliah-2.0
- */
 import java.util.ArrayList;
 public class FirstMeeting {
     public static void main(String[] args) {
