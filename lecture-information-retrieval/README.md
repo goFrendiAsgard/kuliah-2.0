@@ -50,3 +50,5 @@ $a.b = \Sigma_{i=1}^n a_i \times b_i$
 $\cos(\theta) = \frac{(a_1 \times b_1) + (a_2 \times b_2)  + (a_3 \times b_3) + ... + (a_n \times b_n)}{|a| \times |b|}$
 
 $\cos(\theta) = \frac{\Sigma_{i=1}^n a_i \times b_i}{|a| \times |b|}$
+
+__Note__: Since github cannot render LAtEx, here i make a ![screenshot of the formula](rmus-vsm.png), as well as [program example in java](Similarity.java)
