@@ -58,3 +58,30 @@ for(int i = 0; i < b.length; b++) {
 }
 // b = {0, 1, 2, 3}
 ```
+
+# Dynamic array (without ArrayList)
+
+```java
+Scanner in = new Scanner(System.in);
+int[] a = new int[0];
+while(true) {
+    // baca inputan user
+    int nilai = in.nextInt();
+    if(nilai == -1) {
+        break;
+    }
+    // buat b
+    int[] b = new int[a.length + 1];
+    // copykan semua nilai a ke b
+    for(int i = 0; i < a.length; i++) {
+        b[i] = a[i];
+    }
+    // isi elemen terakhir b dengan inputan user
+    b[a.length] = nilai;
+    a = b;
+}
+for (int i = 0; i < a.length; i++) {
+    System.out.println(a[i]);
+}
+in.close();
+```
