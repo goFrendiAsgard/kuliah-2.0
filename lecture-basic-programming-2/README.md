@@ -85,3 +85,30 @@ for (int i = 0; i < a.length; i++) {
 }
 in.close();
 ```
+# Link List Prototype
+
+```java
+class Kucing {
+    String nama;
+    Kucing ibu;
+}
+public class ArrayTest {
+    public static void main(String[] args) {
+        Kucing shadowCat = new Kucing();
+        shadowCat.nama = "Shadowcat";
+        shadowCat.ibu = new Kucing();
+        shadowCat.ibu.nama = "Kitty";
+        shadowCat.ibu.ibu = new Kucing();
+        shadowCat.ibu.ibu.nama = "Pushen Stark";
+
+        System.out.println(shadowCat.nama);
+        System.out.println(shadowCat.ibu.ibu.nama);
+
+        Kucing x = shadowCat;
+        while(x != null) {
+            System.out.println(x.nama);
+            x = x.ibu;
+        }
+    }
+}
+```
