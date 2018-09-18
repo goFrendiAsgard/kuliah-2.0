@@ -52,3 +52,34 @@ $\cos(\theta) = \frac{(a_1 \times b_1) + (a_2 \times b_2)  + (a_3 \times b_3) + 
 $\cos(\theta) = \frac{\Sigma_{i=1}^n a_i \times b_i}{|a| \times |b|}$
 
 __Note__: Since github cannot render LAtEx, here i make a [screenshot of the formula](rumus-vsm.png), as well as [program example in java](Similarity.java)
+
+# Better vectorization
+
+## TF.IDF
+* TF = Term Frequencey
+* DF = Document Frequency
+* IDF = Inverse Document Frequency = $\log\frac{N}{DF}$
+
+### Example
+```
+D1: Roses are red violet is blue your face is red, my face is blue (14 words)
+
+D2: Roses are red violet is blue so that my love is only for you (14 words)
+
+TF(red, D1) = 2/14 --> 2 `red` from 14 words in D1
+TF(blue, D2) = 1/14 --> 1 `blue` from 14 words in D2
+TF(green, D1) = 0/14
+
+DF(red) = 2
+DF(love) = 1
+
+N = how many document available = 2
+IDF(red) = log (2/2) = 0
+IDF(love) = log(2/1) = log(2)
+
+TF.IDF(red, D1) = TF(red, D1) * IDF(red)
+                = 2 * 0
+                = 0
+```
+
+## N-Gram
