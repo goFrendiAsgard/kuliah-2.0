@@ -92,14 +92,15 @@ class Kucing {
     String nama;
     Kucing ibu;
 }
+
 public class ArrayTest {
     public static void main(String[] args) {
         Kucing shadowCat = new Kucing();
-        shadowCat.nama = "Shadowcat";
+        shadowCat.nama = "Amanda";
         shadowCat.ibu = new Kucing();
-        shadowCat.ibu.nama = "Kitty";
+        shadowCat.ibu.nama = "Betty";
         shadowCat.ibu.ibu = new Kucing();
-        shadowCat.ibu.ibu.nama = "Pushen Stark";
+        shadowCat.ibu.ibu.nama = "Cindy";
 
         System.out.println(shadowCat.nama);
         System.out.println(shadowCat.ibu.ibu.nama);
@@ -136,15 +137,9 @@ public class ArrayTest {
 
     public static void main(String[] args) {
         Kucing shadowCat = new Kucing();
-        shadowCat.nama = "Shadowcat";
-        addAncestor(shadowCat, "Kitty");
-        addAncestor(shadowCat, "Pushen Stark");
-        /*
-        shadowCat.ibu = new Kucing();
-        shadowCat.ibu.nama = "Kitty";
-        shadowCat.ibu.ibu = new Kucing();
-        shadowCat.ibu.ibu.nama = "Pushen Stark";
-        */
+        shadowCat.nama = "Amanda";
+        addAncestor(shadowCat, "Betty");
+        addAncestor(shadowCat, "Cindy");
         traverse(shadowCat);
     }
 }
