@@ -148,7 +148,7 @@ apple apple
 function detectPhrases(article: string, N: integer): string[] {}
 
 example:
-phrases = detectPhrases("pen pineapple apple pen pineapple");
+phrases = detectPhrases("pen pineapple apple pen pineapple", 2);
 /*
 phrases == [
   "pen pineapple",
@@ -157,7 +157,14 @@ phrases == [
   "pen pineapple"
 ]
 */
-```
+phrases = detectPhrases("pen pineapple apple pen pineapple", 3);
+/*
+phrases == [
+  "pen pineapple apple",
+  "pineapple apple pen",
+  "apple pen pineapple",
+]
+*/```
 
 * Detect intent
 
