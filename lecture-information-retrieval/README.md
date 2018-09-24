@@ -78,8 +78,100 @@ IDF(red) = log (2/2) = 0
 IDF(love) = log(2/1) = log(2)
 
 TF.IDF(red, D1) = TF(red, D1) * IDF(red)
-                = 2 * 0
+                = 2/14 * 0
                 = 0
 ```
 
 ## N-Gram
+
+```
+D1: pen pineapple apple pen
+D2: I have a pen, I have an apple, apple pen
+
+Unique words:
+* pen
+* pineapple
+* apple
+* I
+* have
+* a
+* an
+
+N-Gram (2 Gram): Unique words + phrase contains of two sequential words
+* pen pineapple
+* pineapple apple
+* apple pen
+* I have
+* have a
+* a pen
+* pen I
+* have an
+* an apple
+* apple apple
+
+```
+
+### Vectorization
+
+```
+D1: pen pineapple apple pen
+D2: I have a pen, I have an apple, apple pen
+
+TF (pen pineapple, D1) = 1 / 3
+* pen pineapple / (pen pineapple, pineapple apple, apple pen)
+
+Vector                  D1
+pen                   TF(pen, D1)*IDF(pen)
+pineapple             TF(pineapple, D1)*IDF(pineapple)
+apple
+I
+have
+a
+an
+pen pineapple
+pineapple apple
+apple pen
+I have
+have a
+a pen
+pen I
+have an
+an apple
+apple apple
+```
+
+### Assignment
+
+* Find a formula to calculate how many phrase (N-Gram) is available in a sentence/document
+
+```javascript
+function detectPhrases(article: string, N: integer): string[] {}
+
+example:
+phrases = detectPhrases("pen pineapple apple pen pineapple");
+/*
+phrases == [
+  "pen pineapple",
+  "pineapple apple",
+  "apple pen",
+  "pen pineapple"
+]
+*/
+```
+
+* Detect intent
+
+```
+PHRASE                  INTENT
+forget it               cancel
+cancel                  cancel
+ga jadi                 cancel
+g jd                    cancel
+jd g?                   confirm
+jd?                     confirm
+jadi?                   confirm
+gimana?                 confirm
+
+Detect intent for:
+Gmn, g jd?
+```
