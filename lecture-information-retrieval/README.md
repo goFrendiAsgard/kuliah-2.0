@@ -164,7 +164,8 @@ phrases == [
   "pineapple apple pen",
   "apple pen pineapple",
 ]
-*/```
+*/
+```
 
 * Detect intent
 
@@ -180,5 +181,5 @@ jadi?                   confirm
 gimana?                 confirm
 
 Detect intent for:
-Gmn, g jd?
+Gmn, g jd? --> [cancel or confirm]
 ```
