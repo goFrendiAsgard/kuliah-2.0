@@ -53,7 +53,7 @@ b[i] = i;  // b[3] = 3  --> b = {0, 1, 2, 3}, i = 3
 i = i + 1; // i = 3 + 1 --> b = {0, 1, 2, 3}, i = 4
 
 // loop-approach (basically a shorter version of `not-so-naive approach`)
-for(int i = 0; i < b.length; b++) {
+for(int i = 0; i < b.length; i++) {
     b[i] = i;
 }
 // b = {0, 1, 2, 3}
