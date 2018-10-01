@@ -183,3 +183,52 @@ gimana?                 confirm
 Detect intent for:
 Gmn, g jd? --> [cancel or confirm]
 ```
+
+# Regex
+
+You can play with regex by visitting [https://regex101.com/](https://regex101.com/)
+
+Regex
+[https://en.wikipedia.org/wiki/Regular_expression](https://en.wikipedia.org/wiki/Regular_expression)
+
+## Example
+
+### Data
+
+```
+Nama: Tono Haryadi
+email: tono@stiki.ac.id
+Nama      : Galih Satriawan
+Hobby: Makan bakso
+Name : Raffi Ahmad
+Alamat: Konoha
+First name : Sasuke
+```
+
+### Regex Pattern (detecting name)
+
+```
+/nam[a,e] *: *(.*)/gmi
+```
+
+### Match Information
+
+```
+Match 1
+Full match	0-18	`Nama: Tono Haryadi`
+Group 1.	6-18	`Tono Haryadi`
+Match 2
+Full match	43-70	`Nama      : Galih Satriawan`
+Group 1.	55-70	`Galih Satriawan`
+Match 3
+Full match	90-108	`Name : Raffi Ahmad`
+Group 1.	97-108	`Raffi Ahmad`
+Match 4
+Full match	130-143	`name : Sasuke`
+Group 1.	137-143	`Sasuke`
+```
+
+## Assignment:
+
+* Make a program to extract name, last education, phone number, email, and position from application letter written in Bahasa Indonesia.
+* In which cases did your program failed?
