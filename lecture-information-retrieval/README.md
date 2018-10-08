@@ -232,3 +232,20 @@ Group 1.	137-143	`Sasuke`
 
 * Make a program to extract name, last education, phone number, email, and position from application letter written in Bahasa Indonesia.
 * In which cases did your program failed?
+
+# Word2Vec
+
+## Rosetta Stone & Hieroglyph
+
+The Rosetta Stone is 1,123 millimetres (3 ft 8 in) high at its highest point, 757 mm (2 ft 5.8 in) wide, and 284 mm (11 in) thick. It weighs approximately 760 kilograms (1,680 lb). It bears three inscriptions: the top register in Ancient Egyptian hieroglyphs, the second in the Egyptian Demotic script, and the third in Ancient Greek. The front surface is polished and the inscriptions lightly incised on it; the sides of the stone are smoothed, but the back is only roughly worked, presumably because this would have not been visible when it was erected. [Wikipedia](https://en.wikipedia.org/wiki/Rosetta_Stone)
+
+## Word2Vec: A Modern Day Rosetta Stone 
+* Overview: [https://code.google.com/archive/p/word2vec/](https://code.google.com/archive/p/word2vec/)
+* Example: 
+  - Pypi: [https://pypi.org/project/word2vec/](https://pypi.org/project/word2vec/)
+  - Usage: [http://nbviewer.jupyter.org/github/danielfrg/word2vec/blob/master/examples/word2vec.ipynb](http://nbviewer.jupyter.org/github/danielfrg/word2vec/blob/master/examples/word2vec.ipynb)
+
+## Exercise
+* Install Python (You can use [anaconda](https://www.anaconda.com/download/))
+* Install word2vec by invoking `pip install word2vec`
+* Follow the instructions from the example
