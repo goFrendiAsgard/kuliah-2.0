@@ -283,4 +283,5 @@ sudo pip3 install -U cython word2vec
   ```
 
 ## Assignment
-Try to classify words by using `prosa.ai`
+* Try to classify words by using `prosa.ai`
+* If `prosa.ai` cannot be accessed, please use NLTK instead.
