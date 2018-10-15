@@ -244,8 +244,43 @@ The Rosetta Stone is 1,123 millimetres (3 ft 8 in) high at its highest point, 75
 * Example: 
   - Pypi: [https://pypi.org/project/word2vec/](https://pypi.org/project/word2vec/)
   - Usage: [http://nbviewer.jupyter.org/github/danielfrg/word2vec/blob/master/examples/word2vec.ipynb](http://nbviewer.jupyter.org/github/danielfrg/word2vec/blob/master/examples/word2vec.ipynb)
+* Word2Vec changes every word in a corpus into a vector.
+* In word2vec, you can do analogy as follow: (king - man + woman = queen)
 
 ## Exercise
 * Install Python (You can use [anaconda](https://www.anaconda.com/download/))
 * Install word2vec by invoking `pip install word2vec`
 * Follow the instructions from the example
+
+## Installation (ubuntu)
+```
+sudo apt-get install python3 python3-dev gcc pip3
+sudo pip3 install -U cython word2vec
+```
+
+# NER
+ Real life Example: [https://docs.prosa.ai/entities/](https://docs.prosa.ai/entities/)
+
+## Steps (Example using word2vec)
+* Tagging
+  ```
+  Saya makan bakso
+  S    P     O
+  ```
+* Every words are changed into vector (word2vec)
+  ```
+  V(Saya): [0.02, 0.23, 0.46,... 0.91]
+  V(makan): [0.34, 0.12, 0.57,... 0.88]
+  V(bakso): [0.44, 0.77, 0.87,... 0.75]
+  ```
+
+* Classification (Neural network)
+  ```
+  makan:
+  V(Saya)  --0--0
+  V(makan) --0--0--0-- [Predikat]
+  V(bakso) --0--0
+  ```
+
+## Assignment
+Try to classify words by using `prosa.ai`
