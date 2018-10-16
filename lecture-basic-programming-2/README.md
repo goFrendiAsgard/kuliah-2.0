@@ -433,24 +433,15 @@ public class Kalkulator {
     }
 
     static String parsePrefix(Node node) {
-        if (isLeaf(node)) {
-            return printNodeData(node);
-        }
-        return printNodeData(node) + " " + parsePrefix(node.left) + " " + parsePrefix(node.right);
+
     }
 
     static String parseSufix(Node node) {
-        if (isLeaf(node)) {
-            return printNodeData(node);
-        }
-        return parseSufix(node.left) + " " + parseSufix(node.right) + " " + printNodeData(node);
+
     }
 
     static String parseInfix(Node node) {
-        if (isLeaf(node)) {
-            return printNodeData(node);
-        }
-        return parseInfix(node.left) + " " + printNodeData(node) + " " + parseInfix(node.right);
+
     }
 }
 ```
