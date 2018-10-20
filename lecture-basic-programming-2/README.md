@@ -85,6 +85,28 @@ for (int i = 0; i < a.length; i++) {
 }
 in.close();
 ```
+
+# ArrayList
+
+```java
+import java.util.ArrayList;
+public class ArrayListDemo {
+
+    public static void main(String args[]) {
+        ArrayList al = new ArrayList();
+        al.add("A");
+        al.add("B");
+        al.add("C");
+        al.remove("B");
+        al.add("D");
+        System.out.println(al);
+        for (int i = 0; i < al.size(); i++) {
+            System.out.println(al.get(i));
+        }
+    }
+}
+```
+
 # Link List Prototype
 
 ```java
@@ -424,7 +446,7 @@ public class Kalkulator {
     static String printNodeData(Node node) {
         if (node.dataOperasi == '+' || node.dataOperasi == '-' || node.dataOperasi == '*' || node.dataOperasi == '/') {
             return "" + node.dataOperasi;
-        }
+        }result
         return Float.toString(node.dataAngka);
     }
 
