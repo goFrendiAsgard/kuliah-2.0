@@ -20,6 +20,27 @@ public class BinaryTree {
         System.out.println(root.left.left.right.data); // 2
     }
     public static void addToTree(float number) {
-        // TODO: your implementation
+        Node node = new Node();
+        node.data = number;
+        if (root == null) {
+            root = node;
+        } else {
+            addToNode(root, node);
+        }
+    }
+    public static void addToNode(Node parent, Node newNode) {
+        if(newNode.data < parent.data) {
+            if (parent.left == null) {
+                parent.left = newNode;
+            } else {
+                addToNode(parent.left, newNode);
+            }
+        } else if (newNode.data > parent.data) {
+            if (parent.right == null) {
+                parent.right = newNode;
+            } else {
+                addToNode(parent.right, newNode);
+            }
+        }
     }
 }
