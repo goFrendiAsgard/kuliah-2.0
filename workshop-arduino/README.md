@@ -127,4 +127,4 @@ void loop() {
 
 # Worksheet
 
-[Click here](HIC ditkom.pdf)
+[Click here](./HIC ditkom.pdf)
