@@ -4,7 +4,7 @@ Electricity is simply defined as movement of electrons.
 
 Almost everything we know is consists of atoms. And inside the atoms there are 3 sub-atomic particles, `proton` (+), `neutron`, and `electron` (-). Electrons can move from one atom to another.
 
-[!Atom Structure](atom.jpeg)
+![Atom Structure](atom.jpeg)
 
 ## Charge (q)
 
@@ -26,15 +26,15 @@ Voltage is the difference in charge between two points. This difference is the r
 
 Resitance is a material’s tendency to resist the flow of charge (current).
 
-[!Waterfall](waterfall.jpeg)
+![Waterfall](waterfall.jpeg)
 
 ## Parallel vs Series
 
-[!Series vs Parallel](series-and-parallel-circuits.jpg)
+![Series vs Parallel](series-and-parallel-circuits.jpg)
 
 ## Short Circuit (beware)
 
-[!Short circuit](short-circuit.jpeg)
+![Short circuit](short-circuit.jpeg)
 
 # Arduino
 
@@ -46,15 +46,15 @@ Easy-to-use micro-controller board
 [Anything] ----> [Sensor] ---electricity---> [Arduino] ---electricity---> [Actuator] ----> [Anything]
 ```
 
-[!input-output-process](input-output-process.png)
+![input-output-process](input-output-process.png)
 
 ## Arduino program
 
-[!Program](arduino-program.jpeg)
+![Program](arduino-program.jpeg)
 
 ## The circuit
 
-[!circuit](circuit.png)
+![circuit](circuit.png)
 
 ## Example: Blink
 
@@ -125,3 +125,6 @@ void loop() {
 }
 ```
 
+# Worksheet
+
+[Click here](HIC ditkom.pdf)
