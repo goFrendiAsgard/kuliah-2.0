@@ -17,6 +17,8 @@ public class BinaryTree {
         addToTree(1);
         addToTree(2);
         System.out.println(root.data); // 5
+        System.out.println(root.left.data); // 3
+        System.out.println(root.right.data); // 8
         System.out.println(root.left.left.right.data); // 2
     }
     public static void addToTree(float number) {
