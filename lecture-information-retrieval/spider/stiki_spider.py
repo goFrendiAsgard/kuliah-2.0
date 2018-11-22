@@ -1,5 +1,6 @@
 import scrapy, io
 
+# scrapy runspider stiki_spider.py
 class StikiSpider(scrapy.Spider):
     name = 'blogspider'
     start_urls = ['http://stiki.ac.id']
@@ -10,7 +11,7 @@ class StikiSpider(scrapy.Spider):
             if judul:
                 judul = judul.encode('utf-8')
                 f = open('output.txt', 'a')
-                f.write(judul)
+                f.write(judul + "\n")
                 f.close()
             # yield {'title': judul}
             
