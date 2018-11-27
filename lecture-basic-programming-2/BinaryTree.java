@@ -37,12 +37,14 @@ public class BinaryTree {
                 root = null;
             } else if (nodeIsLeftChild) { // dan adalah anak kiri
                 parent.left = null;
-            } else if (nodeIsLeftChild) { // dan adalah anak kanan
+            } else if (nodeIsRightChild) { // dan adalah anak kanan
                 parent.right = null;
             }
         } else if (nodeHaveLeftChild && nodeHaveRightChild) { // jika hanya punya anak kiri
         } else if (nodeHaveLeftChild) { // jika hanya punya anak kiri
+            // kerjakan ini
         } else if (nodeHaveRightChild) { // jika hanya punya anak kanan
+            // kerjakan ini juga
         }
     }
 
