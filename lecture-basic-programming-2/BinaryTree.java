@@ -42,9 +42,21 @@ public class BinaryTree {
             }
         } else if (nodeHaveLeftChild && nodeHaveRightChild) { // jika hanya punya anak kiri
         } else if (nodeHaveLeftChild) { // jika hanya punya anak kiri
-            // kerjakan ini
+            if (nodeIsRoot) {
+                root = node.left;
+            } else if (nodeIsLeftChild) {
+                parent.left = node.left;
+            } else if (nodeIsRightChild) {
+                parent.right = node.left;
+            }
         } else if (nodeHaveRightChild) { // jika hanya punya anak kanan
-            // kerjakan ini juga
+            if (nodeIsRoot) {
+                root = node.right;
+            } else if (nodeIsLeftChild) {
+                parent.left = node.right;
+            } else if (nodeIsRightChild) {
+                parent.right = node.right;
+            }
         }
     }
 
