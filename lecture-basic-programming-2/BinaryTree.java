@@ -16,125 +16,112 @@ public class BinaryTree {
         addToTree(4);
         addToTree(1);
         addToTree(2);
-        System.out.println(root.data); // 5
-        System.out.println(root.left.data); // 3
-        System.out.println(root.right.data); // 8
-        System.out.println(root.left.left.right.data); // 2
-
-        Node parentOfRootLeft = findParentInTree(root.left);
-        System.out.println(parentOfRootLeft.data); // 5
-
-        Node parentOfRootLeftLeftRight = findParentInTree(root.left.left.right);
-        System.out.println(parentOfRootLeftLeftRight.data); // 1
-
-        Node parentOfRoot = findParent(root, root);
-        System.out.println(parentOfRoot);
-
-        printTree(); // complete tree
-
-        deleteFromTree(root.left.left); // delete 1
-        deleteFromTree(root.right.right); // delete 9
-
-        printTree(); // complete tree after 1 & 9 deleted
+        printTree();
+        deleteNode(4);
+        deleteNode(1);
+        deleteNode(8);
+        printTree();
     }
 
-    public static void deleteFromTree(Node node) {
-        Node parent = findParentInTree(node);
-        if(!isHaveChild(node)) { // kalau node yang dihapus nggak punya anak
-            if (node == root) { // dan node yang dihapus adalah root
+    public static void deleteNode(float data) {
+        Node node = findNodeInTree(data);
+        Node parent = findParentInTree(node.data);
+        boolean nodeHavingChild = isHavingChild(node);
+        boolean nodeIsRoot = isRoot(node);
+        boolean nodeIsLeftChild = isLeftChild(node);
+        boolean nodeIsRightChild = isRightChild(node);
+        boolean nodeHaveLeftChild = isHavingLeftChild(node);
+        boolean nodeHaveRightChild = isHavingRightChild(node);
+        if (!nodeHavingChild) { // tidak punya anak
+            if (nodeIsRoot) {     // dan adalah root
                 root = null;
-            } else { // dan node yang dihapus bukan root
-                deleteFromParent(parent, node);
-            }
-        } else if (isHaveLeftChild(node) && !isHaveRightChild(node)) { // punya anak kiri doang
-            if (node == root) { // dan dia root
-                root = node.left;
-            } else if (isLeftChild(node)) { // dan dia sendiri anak kiri
-                parent.left = node.left;
-            } else { // tapi dia sendiri anak kanan
-                parent.right = node.left;
-            }
-        } else if (isHaveRightChild(node) && !isHaveLeftChild(node)) { // punya anak kanan doang
-            if (node == root) { // dan dia root
-                root = node.right;
-            } else if (isLeftChild(node)) { // tapi dia sendiri anak kiri
-                parent.left = node.right;
-            } else { // dan dia sendiri anak kanan
-                parent.right = node.right;
-            }
-        } else { // punya dua anak
-            if (node == root) { // dan yang dihapus root
-            } else if (isLeftChild(node)) { // dan dia sendiri anak kiri
-            } else { // dan dia sendiri anak kanan
-            }
-        }
-    }
-
-    public static void deleteFromParent(Node parent, Node node) {
-        if (parent != null) {
-            if (parent.left == node) {
+            } else if (nodeIsLeftChild) { // dan adalah anak kiri
                 parent.left = null;
-            } else if (parent.right == node) {
+            } else if (nodeIsLeftChild) { // dan adalah anak kanan
                 parent.right = null;
             }
+        } else if (nodeHaveLeftChild && nodeHaveRightChild) { // jika hanya punya anak kiri
+        } else if (nodeHaveLeftChild) { // jika hanya punya anak kiri
+        } else if (nodeHaveRightChild) { // jika hanya punya anak kanan
         }
     }
 
-    public static boolean isLeftChild(Node node) {
-        Node parent = findParentInTree(node);
-        return parent != null && parent.left == node;
+    public static boolean isRoot(Node node) {
+        return node == root;
     }
 
     public static boolean isRightChild(Node node) {
-        Node parent = findParentInTree(node);
+        Node parent = findParentInTree(node.data);
         return parent != null && parent.right == node;
     }
 
-    public static boolean isHaveLeftChild(Node node) {
+    public static boolean isLeftChild(Node node) {
+        Node parent = findParentInTree(node.data);
+        return parent != null && parent.left == node;
+    }
+
+    public static boolean isHavingChild(Node node) {
+        return isHavingRightChild(node) || isHavingRightChild(node);
+    }
+
+    public static boolean isHavingLeftChild(Node node) {
         return node.left != null;
     }
 
-    public static boolean isHaveRightChild(Node node) {
+    public static boolean isHavingRightChild(Node node) {
         return node.right != null;
     }
 
-    public static boolean isHaveChild(Node node) {
-        return isHaveRightChild(node) || isHaveLeftChild(node);
+    public static Node findParentInTree(float data) {
+        return findParent(root, data);
     }
 
-    public static Node findParentInTree(Node node) {
-        return findParent(root, node);
+    public static Node findParent(Node node, float data) {
+        if (node == null) {
+            return null;
+        }
+        if ((node.left != null && node.left.data == data) || (node.right != null && node.right.data == data)) {
+            return node;
+        }
+        Node result = findParent(node.left, data);
+        if (result == null) {
+            result = findParent(node.right, data);
+        }
+        return result;
     }
 
-    public static Node findParent(Node ancestor, Node node) {
-        if (ancestor.left == node || ancestor.right == node) {
-            return ancestor;
+
+    public static Node findNodeInTree(float data) {
+        return findNode(root, data);
+    }
+
+    public static Node findNode(Node node, float data) {
+        if (node == null) {
+            return null;
         }
-        Node parent = null;
-        if (ancestor.left != null) {
-            parent = findParent(ancestor.left, node);
+        if (node.data == data) {
+            return node;
         }
-        if (parent == null && ancestor.right != null) {
-            parent = findParent(ancestor.right, node);
+        Node result = findNode(node.left, data);
+        if (result == null) {
+            result = findNode(node.right, data);
         }
-        return parent;
+        return result;
     }
 
     public static void printTree() {
         System.out.println();
-        printNode(root, "", "Root: ");
+        printNode(root, "", "ROOT : ");
         System.out.println();
     }
 
-    public static void printNode(Node node, String prefix, String label) {
-        if (node != null) {
-            System.out.println(prefix + label + node.data);
-            if (node.left != null) {
-                printNode(node.left, prefix + " ", "L: ");
-            }
-            if (node.right != null) {
-                printNode(node.right, prefix + " ", "R: ");
-            }
+    public static void printNode(Node node, String spaces, String prefix) {
+        System.out.println(spaces + prefix + node.data);
+        if (node.left != null) {
+            printNode(node.left, spaces + "  ", "L: ");
+        }
+        if (node.right != null) {
+            printNode(node.right, spaces + "  ", "R: ");
         }
     }
 
