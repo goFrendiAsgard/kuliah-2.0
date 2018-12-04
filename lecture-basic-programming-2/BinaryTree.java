@@ -18,7 +18,9 @@ public class BinaryTree {
         addToTree(2);
         printTree();
         deleteNode(4);
+        printTree();
         deleteNode(1);
+        printTree();
         deleteNode(8);
         printTree();
     }
@@ -40,7 +42,28 @@ public class BinaryTree {
             } else if (nodeIsRightChild) { // dan adalah anak kanan
                 parent.right = null;
             }
-        } else if (nodeHaveLeftChild && nodeHaveRightChild) { // jika hanya punya anak kiri
+        } else if (nodeHaveLeftChild && nodeHaveRightChild) { // jika punya 2 anak
+            // cari candidate
+            Node candidate = node.right;
+            while(candidate.left != null) {
+                candidate = candidate.left;
+            }
+            // cari candidateParent
+            Node candidateParent = findParentInTree(candidate.data);
+            if (candidateParent != node) {
+                candidateParent.left = candidate.right;
+                candidate.right = node.right;
+            }
+            // replace node with candidate
+            candidate.left = node.left;
+            // assign node's parent as candidate's parent
+            if (nodeIsRightChild) {
+                parent.right = candidate;
+            } else if (nodeIsLeftChild) {
+                parent.left = candidate;
+            } else if (nodeIsRoot) {
+                root = candidate;
+            }
         } else if (nodeHaveLeftChild) { // jika hanya punya anak kiri
             if (nodeIsRoot) {
                 root = node.left;

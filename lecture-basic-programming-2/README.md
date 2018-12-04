@@ -467,3 +467,6 @@ public class Kalkulator {
     }
 }
 ```
+
+# Link UAS
+http://gg.gg/pd2-2018
