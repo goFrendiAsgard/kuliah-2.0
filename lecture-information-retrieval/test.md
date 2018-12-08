@@ -5,5 +5,5 @@ Semisal terdapat 4 document:
 * D3: Kalau tidak bundar
 * D4: Bukan topi saya
 
-1. Lakukan vektorisasi pada keempat dokumen tersebut
+1. Lakukan vektorisasi pada keempat dokumen tersebut (menggunakan TF.IDF)
 2. Jika ada pencarian dengan query "Ksatria meja bundar", dokumen mana saja yang memiliki similarity paling besar terhadap query?
