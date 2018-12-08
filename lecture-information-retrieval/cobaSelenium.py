@@ -10,7 +10,7 @@ searchLink.click()
 searchInput = browser.find_element_by_class_name('s')
 searchInput.send_keys('kemahasiswaan' + Keys.RETURN)
 
-h2 = browser.find_element_by_css_selector('h2.entry-title')
-judul = h2.text
+judulLink = browser.find_element_by_css_selector('h2.entry-title>a')
+judul = judulLink.text
 print(judul)
 browser.quit()
