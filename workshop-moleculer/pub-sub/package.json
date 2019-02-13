@@ -1,0 +1,14 @@
+{
+  "name": "pub-sub",
+  "version": "1.0.0",
+  "description": "demo for workshop at stiki",
+  "main": "subscriber.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "goFrendi",
+  "license": "ISC",
+  "dependencies": {
+    "nats": "^1.2.2"
+  }
+}
