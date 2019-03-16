@@ -1,0 +1,16 @@
+{
+  "name": "microservice",
+  "version": "1.0.0",
+  "description": "demo for workshop",
+  "main": "gateway.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "goFrendi",
+  "license": "ISC",
+  "dependencies": {
+    "moleculer": "^0.13.5",
+    "moleculer-web": "^0.8.5",
+    "nats": "^1.2.2"
+  }
+}

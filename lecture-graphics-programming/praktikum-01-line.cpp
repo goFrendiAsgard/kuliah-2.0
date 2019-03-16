@@ -40,7 +40,7 @@ void display()
 
   glTranslatef(0.0, 0.0, -6.0);
   glBegin(GL_LINES);
-      glColor3f(1,0,0); // red
+      glColor3f(0, 0, 0); // red
       glVertex3f(0,0,0);
       glVertex3f(3,0,0);
   glEnd();

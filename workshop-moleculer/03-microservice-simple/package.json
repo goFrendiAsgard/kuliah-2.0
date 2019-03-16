@@ -1,7 +1,7 @@
 {
   "name": "microservice",
   "version": "1.0.0",
-  "description": "demo for workshop at stiki",
+  "description": "demo for workshop",
   "main": "gateway.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
