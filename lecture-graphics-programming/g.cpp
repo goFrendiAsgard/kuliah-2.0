@@ -39,8 +39,8 @@ void display()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  glTranslatef(0.0, 0.0, -8.0);
-  glRotatef(sudut, 0,1,0);
+  glTranslatef(0.0, 0.0, -10.0);
+  // glRotatef(sudut, 0,1,0);
   glBegin(GL_LINES);
       glColor3f(1,0,0); // red
 
@@ -81,7 +81,7 @@ void display()
       glVertex3f(3,2,0);
 
   glEnd();
-  sudut++;
+  // sudut++;
 
   glFlush();
   glutSwapBuffers();
