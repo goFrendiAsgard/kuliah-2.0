@@ -60,26 +60,50 @@ void segiBeraturan(float xPusat, float yPusat, float r, int segi, float sudutAwa
   glEnd();
 }
 
-void gambarSumbu() {
-  glBegin(GL_LINES);
-    glVertex3f(0,0,0); // x
-    glVertex3f(2,0,0);
-    glVertex3f(0,0,0); // y
-    glVertex3f(0,2,0);
-    glVertex3f(0,0,0); // z 
-    glVertex3f(0,0,2);
-  glEnd();
-}
-
 void gambarHati() {
+  /*
   glBegin(GL_LINES);
     glVertex3f(-1.414, 0, 0);
     glVertex3f(0, -1.414, 0);
     glVertex3f(0, -1.414, 0);
     glVertex3f(1.414, 0, 0);
   glEnd();
+  */
   segiBeraturan( 0.707, 0.707, 1, 16, -45, 135);
   segiBeraturan(-0.707, 0.707, 1, 16, 45, 225);
+}
+
+void gambarSumbu() {
+  glBegin(GL_LINES);
+    glVertex3f(0,0,0); // x
+    glVertex3f(3,0,0);
+    glVertex3f(0,0,0); // y
+    glVertex3f(0,3,0);
+    glVertex3f(0,0,0); // z
+    glVertex3f(0,0,3);
+  glEnd();
+}
+
+void bunga() {
+  glTranslatef(1, 1, 0);
+  glRotatef(-45, 0, 0, 1);
+  gambarHati();
+  glRotatef(45, 0, 0, 1);
+
+  glTranslatef(-2, 0, 0);
+  glRotatef(45, 0, 0, 1);
+  gambarHati();
+  glRotatef(-45, 0, 0, 1);
+
+  glTranslatef(0, -2, 0);
+  glRotatef(135, 0, 0, 1);
+  gambarHati();
+  glRotatef(-135, 0, 0, 1);
+
+  glTranslatef(2, 0, 0);
+  glRotatef(-135, 0, 0, 1);
+  gambarHati();
+  glRotatef(135, 0, 0, 1);
 }
 
 void display()
@@ -88,23 +112,13 @@ void display()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  glTranslatef(-0.5, -0.5, -8.0);
+  glTranslatef(0.0, 0.5, -10.0);
 
-  glColor3f(0, 0, 0);
-  gambarSumbu();
+  // gambar sumbu koordinat
+  glColor3f(0,0,0);
 
-  glTranslatef(2, 1, 0); // TRANSLASI 2,1,0
-  glColor3f(1, 0, 0); // UBAH WARNA JADI MERAH
   gambarSumbu();
-
-  glRotatef(30, 0, 0, 1); // ROTASI Z 30 derajat
-  glColor3f(0, 0, 1); // UBAH WARNA JADI BIRU
-  gambarSumbu();
-
-  glTranslatef(-2, 0, 0); // TRANSLASI 2,1,0
-  glColor3f(1, 0, 1); // UBAH WARNA JADI UNGU
-  gambarSumbu();
-  gambarHati();
+  bunga();
 
   glFlush();
   glutSwapBuffers();
