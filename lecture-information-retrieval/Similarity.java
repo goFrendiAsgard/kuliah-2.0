@@ -34,6 +34,8 @@ public class Similarity {
     }
 
     public static void main(String[] args) {
+        String artikel1 = "roses are red violet is blue your face is red my face is blue";
+        String artikel2 = "roses are red violet is blue so that my love is only for you";
         double[] d1 = {1,1,2,1,3,2,1,1,2,0,0,0,0,0,0};
         double[] d2 = {1,1,1,2,1,0,1,0,1,1,1,1,1,1,1};
         System.out.println(hitungSimilarity(d1, d2));
