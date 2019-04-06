@@ -73,11 +73,12 @@ void display()
   glColor3f(0,0,0);
 
   glBegin(GL_LINES);
-    glVertex3f(-1.414, 0, 0);
-    glVertex3f(0, -1.414, 0);
-    glVertex3f(0, -1.414, 0);
-    glVertex3f(1.414, 0, 0);
+    glVertex3f(-1.414, 0, 0); // A
+    glVertex3f(0, -1.414, 0); // D
+    glVertex3f(0, -1.414, 0); // D
+    glVertex3f(1.414, 0, 0);  // C
   glEnd();
+
   segiBeraturan( 0.707, 0.707, 1, 16, -45, 135);
   segiBeraturan(-0.707, 0.707, 1, 16, 45, 225);
 

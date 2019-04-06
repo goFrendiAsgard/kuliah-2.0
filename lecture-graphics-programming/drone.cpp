@@ -68,7 +68,7 @@ void display()
   glLoadIdentity();
 
   glTranslatef(0, -2, -10);
-  glRotatef(-0.5 * angle, 0, 1, 0);
+  // glRotatef(-0.5 * angle, 0, 1, 0);
   glColor3f(1,1,1);
   badan();
 

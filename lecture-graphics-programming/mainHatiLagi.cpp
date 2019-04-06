@@ -88,7 +88,8 @@ void display()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  glTranslatef(-0.5, -0.5, -8.0);
+  glTranslatef(-2.5, -2.5, -9.0);
+  // glTranslatef(0, 0, -8.0);
 
   glColor3f(0, 0, 0);
   gambarSumbu();
@@ -101,7 +102,7 @@ void display()
   glColor3f(0, 0, 1); // UBAH WARNA JADI BIRU
   gambarSumbu();
 
-  glTranslatef(-2, 0, 0); // TRANSLASI 2,1,0
+  glTranslatef(-2, 0, 0); // TRANSLASI -2,0,0
   glColor3f(1, 0, 1); // UBAH WARNA JADI UNGU
   gambarSumbu();
   gambarHati();
