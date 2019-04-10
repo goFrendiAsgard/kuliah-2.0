@@ -1,0 +1,263 @@
+Step-by-Step Tutorial for Apache Spark Installation
+This tutorial presents a step-by-step guide to install Apache Spark. Spark can be configured with multiple cluster managers like YARN, Mesos etc. Along with that it can be configured in local mode and standalone mode.
+
+Standalone Deploy Mode
+Simplest way to deploy Spark on a private cluster. Both driver and worker nodes runs on the same machine.
+Amazon EC2
+EC2 scripts are available
+Very quick launching a new cluster
+Apache Mesos
+Driver run on the master
+Worker nodes run on separate machine
+Hadoop YARN
+Underlying storage is HDFS.
+Driver runs inside an application master process which is managed by YARN on the cluster
+Worker nodes run on each datanode
+Standalone mode is good to go for a developing applications in spark. Spark processes runs in JVM. Java should be pre-installed on the machines on which we have to run Spark job. Let’s install java before we configure spark.
+
+Note: This tutorial uses an Ubuntu box to install spark and run the application.
+
+Change to the directory where you wish to install java. This tutorial has used “ /DeZyre” directory
+cd /DeZyre
+Change the permission of the directory
+chmod 777 –R /DeZyre
+Download java jdk(This tutorial uses Java 8 however Java 7 is also compatible )
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie""
+http://download.oracle.com/otn-pub/java/jdk/8u51-b16/jdk-8u51-linux-x64.tar.gz"
+Decompress the downloaded tarball of java jdk
+tar xzf jdk-8u51-linux-x64.tar.gz
+       5. Update the available files in your default java alternatives so that java 8 is referenced for all application
+
+sudo  update-alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_51/bin/jar 1
+sudo  update-alternatives --install /usr/bin/java java /opt/jdk1.8.0_51/bin/java 1
+sudo   update-alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_51/bin/javac 1
+sudo   update-alternatives --install /usr/bin/jps jps /opt/jdk1.8.0_51/bin/jps 1
+sudo   update-alternatives --set jar /DeZyre/jdk1.8.0_51/bin/jar
+sudo   update-alternatives --set javac /DeZyre/jdk1.8.0_51/bin/javac
+This would install Java 8 in the machine. You can check it using the command java -version.
+
+Now, we would install Spark on the machine. We would be configuring Spark to run in standalone mode, hence we would download prebuilt binary of Spark which is precompiled against Hadoop. Go to http://spark.apache.org/downloads.html page. Select the spark distribution as shown in the below snapshot:
+
+
+
+Download Spark-1.6.1 from the shown link or use the following command to download spark
+
+wget http://mirror.fibergrid.in/apache/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.4.tgz
+Decompress the Spark file into /DeZyre directory
+
+tar –xvf spark-1.6.1-bin-hadoop2.4.tgz –C /DeZyre
+Make a softlink to the actual spark directory (This will be helpful for any version upgrade in future)
+
+ln -s spark-1.5.2-bin-hadoop2.4 spark
+Make an entry for spark in .bashrc file
+
+SPARK_HOME=/DeZyre/spark
+
+export PATH=$SPARK_HOME/bin:$PATH
+Source the changed .bashrc file by the command
+
+source  ~/.bashrc
+We have successfully configured spark in standalone mode. To check let’s launch the Spark Shell by the following command:
+
+spark-shell
+Now in the launched spark-shell, let’s check the Spark’s Scala shell version by the following command
+
+sc.version
+Next we will write a basic Scala application to load a file and then see its content on the console. But before we start writing any java application let’s get familiar with few terms of spark application:
+
+Application jar
+User program and its dependencies are bundled into the application jar so that all of its dependencies are available to the application.
+Driver program
+It acts as the entry point of the application. This is the process which starts complete execution.
+Cluster Manager
+This is an external service which manages resources needed for the job execution.
+It can be standalone spark manager, Apache Mesos, YARN, etc.
+Deploy Mode
+Cluster – Here driver runs inside the cluster
+Client – Here driver is not part of the cluster. It is only responsible for job submission.
+Worker Node
+This is the node that runs the application program on the machine which contains the data.
+Executor
+Process launched on the worker node that runs tasks
+It uses worker node’s resources and memory
+Task
+Fundamental unit of the Job that is run by the executor
+Job
+It is combination of multiple tasks
+Stage
+Each job is divided into smaller set of tasks called stages. Each stage is sequential and depend on each other.
+Learn Hadoop by working on interesting Big Data and Hadoop Projects for just $9
+
+SparkContext
+It gets the application program access to the distributed cluster.
+This acts as a handle to the resources of cluster.
+We can pass custom configuration using the sparkcontext object.
+It can be used to create RDD, accumulators and broadcast variable
+RDD(Resilient Distributed Dataset)
+RDD is the core of the spark’s API
+It distributes the source data into multiple chunks over which we can perform operation simultaneously
+Various transformation and actions can be applied over the RDD
+RDD is created through SparkContext
+Accumulator
+This is used to carry shared variable across all partitions.
+They can be used to implement counters (as in MapReduce) or sums
+Accumulator’s value  can only be read by the driver program
+It is set by the spark context
+Broadcast Variable
+Again a way of sharing variables across the partitions
+It is a read only variable
+Allows the programmer to distribute a read-only variable cached on each machine rather than shipping a copy of it with tasks thus avoiding wastage of disk space.
+Any common data that is needed by each stage is distributed across all the nodes
+Spark provides different programming APIs to manipulate data like Java, R, Scala and Python. We have interactive shell for three programming languages i.e. R, Scala and Python among the four languages. Unfortunately Java doesn’t provide interactive shell as of now.
+
+
+
+ETL Operation in Apache Spark
+In this section we would learn a basic ETL (Extract, Load and Transform) operation in the interactive shell.
+
+Start the Spark’s scala-shell:
+
+spark-shell
+Load a file into the scala-shell with the help of sparkcontext:
+
+scala> var Data = sc.textFile("/DeZyre/spark/CHANGES.txt")
+Data: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[1] at textFile at :21
+Split each line into tokens of separate words
+
+scala> var tokens = Data.flatMap(s => s.split(" "))
+tokens: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at flatMap at :23
+Append 1 with each word
+
+scala> var tokens_1 = tokens.map(s => (s,1))
+tokens_1: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[3] at map at :25
+Calculate frequency of each word by adding all the one’s against one word
+
+scala> var sum_each = tokens_1.reduceByKey((a, b) => a + b)
+sum_each: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at :27
+Let’s check the output :
+
+scala> sum_each.collect()
+
+res4: Array[(String, Int)] = Array((aa4ca8b,,1), ([SPARK-7578],1), (5f27ae1,,1), (,4), (7aa269f,,1), (github.com/apache/spark/pull/4176,2), (22:29:24,2), ("unit-tests.log",1), (ntile,1), (19e30b4,,1), (13:17:26,1), (98e7045,,1), (8049,1), (github.com/apache/spark/pull/8127,1), (14:47:04,1), ([SPARK-6088],2), ([SPARK-7650],2), (inSet,1), (69e858c,,1), (execute,2), ([SPARK-6133],2), (SPARK-5557:,2), (00:32:46,1), (,2), (ignore,4), (non-attribute,1), ([SPARK-4975][SQL],1), (github.com/apache/spark/pull/6960,1), (github.com/apache/spark/pull/7915,1), ([SPARK-9095],1), (github.com/apache/spark/pull/4419,1), (different,10), (13:44:05,2), ([SPARK-4312],1), (3638216,,1), (github.com/apache/spark/pull/4410,2), ([SPARK-8059],1), (github.com/apache/spark/pu...
+In place of printing output on console, save the output to a file in local file system
+
+sum_each.saveAsTextFile("/DeZyre/spark_out")
+Now we will check the file /DeZyre/spark_out to confirm the write
+
+head/DeZyre/spark_out
+(aa4ca8b,,1)
+([SPARK-7578],1)
+(5f27ae1,,1)
+(,4)
+(7aa269f,,1)
+(github.com/apache/spark/pull/4176,2)
+(22:29:24,2)
+("unit-tests.log",1)
+(ntile,1)
+(19e30b4,,1)
+In the above operation we did an ETL task:
+
+Extract: Extracted the plain text file using sc.textFile("/DeZyre/spark/CHANGES.txt")
+
+Transform: transformed the data into a key-value pair using
+
+Data.flatMap(s => s.split(" "))  : to tokenize each line of the input file to individual words
+tokens.map(s => (s,1)) : to append 1 with each word
+tokens_1.reduceByKey((a, b) => a + b) : To aggregate each unigue word together and adding the appended one’s with each to give the count of each word.
+Load: Loaded the final operation first on to the console and then to a persistent storage i.e. local file system using
+
+sum_each.collect() : To dump the output on console
+sum_each.saveAsTextFile("/DeZyre/spark_out") : to save the output in file
+ Let’s do the same ETL task but this time with python in place of Spark:
+
+Start the spark’s python shell:
+
+pyspark
+Load a file into the python-shell with the help of spark context :
+
+>>> Data = sc.textFile("/DeZyre/spark/CHANGES.txt")
+Split each line into tokens of separate words
+
+>>> tokens = Data.flatMap(lambda s : s.split(" "))
+Append 1 with each word
+
+>>> tokens_1 = tokens.map(lambda s :(s,1))
+Calculate frequency of each word by adding all the one’s against one word
+
+>>> sum_each = tokens_1.reduceByKey(lambda a,b : a + b)
+Let’s check the output :
+
+>>> sum_each.collect()
+
+[ (u'TungstenAggregate', 2), (u'e92c24d,', 1), (u'registration', 1), (u'[SPARK-8766]', 1), (u'[SPARK-7123]', 1), (u'[SPARK-4670]', 1), (u'13:41:00', 1), (u'tryToAcquire', 1), (u'github.com/apache/spark/pull/6603', 1), (u'github.com/apache/spark/pull/6601', 1), (u'github.com/apache/spark/pull/6600', 1), (u'github.com/apache/spark/pull/6607', 1), (u'github.com/apache/spark/pull/6606', 1), (u'github.com/apache/spark/pull/6605', 1), (u'github.com/apache/spark/pull/6604', 1), (u'Kenji', 1), (u'github.com/apache/spark/pull/6609', 1), (u'28c7aca,', 1), (u'5d7d4f8,', 1), (u'[SPARK-7676]', 2), (u'README.md', 4), (u'17:14:09', 1), (u'Reynold', 385), (u'10:31:39', 1), (u'[SPARK-6966][SQL]', 1), (u'16:24:07', 2), (u'10:31:31', 1), (u'10:31:35', 1), (u'31da40d,', 1), (u'non-existent', 1), (u'320bca4,', 1), (u'8cb415a,', 1), (u'[SPARK-4463]', 1), (u'18:50:37', 1), (u'github.com/apache/spark/pull/3549', 1), (u'02:01:56', 1), (u'github.com/apache/spark/pull/3542', 1), (u'github.com/apache/spark/pull/3547', 1), (u'github.com/apache/spark/pull/3545', 1), (u'github.com/apache/spark/pull/3544', 1), (u'LogLoss', 1), (u'branch', 10), (u'Improving', 4), (u'119f45d,', 1), (u'13:15:01', 1), (u'13:15:04', 1), (u'', 4), (u'doctest.testmod()', 1), (u'c234d78,', 1), (u'2f82c84,', 1), (u'[SPARK-7648]', 2)]
+Save the output to a file in local file system
+
+sum_each.saveAsTextFile("/DeZtre/spark_out")
+Now we will check the file /DeZyre/spark_out to confirm the write
+
+head/DeZyre/spark_out
+More or less both programming languages are almost same in doing the same task. The differences between usage of Scala and Python for Spark are:
+
+Lambda Expression :
+Lambda expression are unnamed functions which can be invoked inline.
+In Scala it is invoked using “=>” operator.
+In python it is invoked using keyword “lambda” and then “:” operator
+Variable Initialization :
+In Scala variables are initialized using “var” keyword
+However in python there is no need to define any variable using any keyword.
+We can so the same tasks even in batch mode with “spark-submit” command. However, when running in batch mode the SparkContext object will have to be initialized by the programmer. It is not available by default as it is in interactive shell.
+
+
+
+Upcoming Live Apache Spark Training
+21
+Apr
+Sat and Sun (5 weeks)
+7:00 AM - 11:00 AM PST
+$399
+LEARN MORE
+05
+May
+Sat and Sun (5 weeks)
+7:00 AM - 11:00 AM PST
+$399
+LEARN MORE
+ Promotianal Price
+ Microsoft Track 
+Microsoft Professional Hadoop Certification Program
+ Hackerday 
+Online courses
+Hadoop Training
+Spark Training
+Data Science in Python
+Data Science in R
+Data Science Training
+Hadoop Training in California
+Hadoop Training in New York
+Hadoop Training in Texas
+Hadoop Training in Virginia
+Hadoop Training in Washington
+Hadoop Training in New Jersey
+Hadoop Training in Dallas
+Hadoop Training in Atlanta
+Hadoop Training in Chicago
+Hadoop Training in Canada
+Hadoop Training in Charlotte
+Hadoop Training in Abudhabi
+Hadoop Training in Dubai
+Hadoop Training in Detroit
+Hadoop Training in Edison
+Hadoop Training in Germany
+Hadoop Training in Fremont
+Hadoop Training in Houston
+Hadoop Training in Sanjose
+Step-by-Step Apache Spark Installation Tutorial Blog
+ 
+Recap of Hadoop News for September 2018
+ 
+Recap of Hadoop News for August 2018
+ 
+AWS vs Azure-Who is the big winner in the cloud war?
+ 
+Recap of Hadoop News for July 2018
+ 

@@ -48,21 +48,31 @@ void display()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  glTranslatef(0.0, 0.0, -6.0);
+  glTranslatef(0.0, 0.0, -8.0);
 
   glColor3f(1,0,0); // warna merah
 
   glPushMatrix(); // simpan posisi & orientasi koordinat saat ini
-  glTranslatef(-2,0,0);
+  glTranslatef(-2,-2,0);
+  glRotatef(-sudut, 0, 0, 1);
+  gambarSegiEmpat();
+
+  glPopMatrix(); // kembalikan ke posisi semula (sebelum push matrix)
+  glPushMatrix();
+  glTranslatef(2,2,0);
+  glRotatef(-sudut, 0, 0, 1);
+  gambarSegiEmpat();
+
+  glPopMatrix(); // kembalikan ke posisi semula (sebelum push matrix)
+  glPushMatrix();
+  glTranslatef(2,-2,0);
   glRotatef(sudut, 0, 0, 1);
   gambarSegiEmpat();
 
-  // glRotatef(-sudut, 0, 0, 1);
-  // glTranslatef(2,0,0);
-
   glPopMatrix(); // kembalikan ke posisi semula (sebelum push matrix)
-  glTranslatef(2,0,0);
-  glRotatef(-sudut, 0, 0, 1);
+  glPushMatrix();
+  glTranslatef(-2,2,0);
+  glRotatef(sudut, 0, 0, 1);
   gambarSegiEmpat();
 
   sudut ++;
