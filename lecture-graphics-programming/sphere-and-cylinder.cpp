@@ -72,7 +72,7 @@ void display()
   glTranslatef(-2,0,0);
   glRotatef(sudut, 0,1,0);
   glColor3f(1,0,0);
-  gluCylinder(q, 1, 1, 2, 10, 10);
+  gluCylinder(q, 1, 0, 2, 10, 10);
 
   sudut++;
   if (sudut == 360) {

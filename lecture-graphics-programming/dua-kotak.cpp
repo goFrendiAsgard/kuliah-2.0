@@ -57,8 +57,15 @@ void display()
   glRotatef(sudut, 0, 0, 1);
   gambarSegiEmpat();
 
-  // glRotatef(-sudut, 0, 0, 1);
-  // glTranslatef(2,0,0);
+  /*
+  glLoadIdentity();
+  glTranslatef(0.0, 0.0, -6.0);
+  */
+
+  /*
+  glRotatef(-sudut, 0, 0, 1);
+  glTranslatef(2,0,0);
+  */
 
   glPopMatrix(); // kembalikan ke posisi semula (sebelum push matrix)
   glTranslatef(2,0,0);
