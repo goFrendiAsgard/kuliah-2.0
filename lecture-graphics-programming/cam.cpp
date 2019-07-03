@@ -52,11 +52,19 @@ void reshape(GLsizei width, GLsizei height)
 GLUquadric *q = gluNewQuadric();
 float sudut = 0;
 
+double angka = 0;
 void display()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
+
+  gluLookAt(
+    angka,0,0,
+    angka,0,-1,
+    1,0,0
+  );
+  angka += 0.01;
 
   glTranslatef(0.0, 0.0, -6.0);
 
@@ -72,7 +80,7 @@ void display()
   glTranslatef(-2,0,0);
   glRotatef(sudut, 0,1,0);
   glColor3f(1,0,0);
-  gluCylinder(q, 0, 1, 2, 4, 10);
+  gluCylinder(q, 1, 1, 2, 10, 10);
 
   sudut++;
   if (sudut == 360) {

@@ -8,6 +8,7 @@
 GLUquadric *q = gluNewQuadric();
 GLfloat camY = 0.0;
 GLfloat camX = 0.0;
+GLfloat camZ = 0.0;
 GLfloat angle = 1;
 GLfloat direction = 1;
 
@@ -93,8 +94,8 @@ void display()
   glLoadIdentity();
 
   gluLookAt(
-    camX, camY, 0, 
-    0, 0,-15,
+    camX, camY, camZ, 
+    camX, camY, camZ-15,
     0,1,0);
 
   glTranslatef(0, 0, -15);
@@ -163,8 +164,8 @@ void reshape(GLsizei width, GLsizei height)
 void keyControl(int k, int x, int y)
 {
   switch(k) {
-    case GLUT_KEY_UP: camY ++; break;
-    case GLUT_KEY_DOWN: camY --; break;
+    case GLUT_KEY_UP: camZ --; break;
+    case GLUT_KEY_DOWN: camZ ++; break;
     case GLUT_KEY_LEFT: camX --; break;
     case GLUT_KEY_RIGHT: camX ++; break;
   }
