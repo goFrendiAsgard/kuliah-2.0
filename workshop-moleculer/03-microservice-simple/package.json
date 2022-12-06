@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "moleculer": "^0.13.5",
-    "moleculer-web": "^0.8.5",
+    "moleculer-web": "^0.10.4",
     "nats": "^1.2.2"
   }
 }
